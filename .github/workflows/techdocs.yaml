@@ -15,6 +15,9 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::637423385007:role/BackstageTechDocsRole
           aws-region: eu-west-1
+        env:
+          AWS_DEBUG: true # Enable debug logs
+      - run: aws sts get-caller-identity # Verify assumed role
       - name: Install techdocs-cli
         run: npm install -g @techdocs/cli
       - name: Generate and Publish Docs
